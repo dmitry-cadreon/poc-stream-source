@@ -1,0 +1,27 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        input:
+          destination: ex.stream.in
+          binder: rabbit1
+        dsp1out:
+          destination: ha.dsp1.out
+          content-type: application/json
+          group: campaign
+          binder: rabbit1
+        dsp2out:
+          destination: ha.dsp2.out
+          content-type: application/json
+          group: campaign
+          binder: rabbit1
+      binders:
+        rabbit1:
+          type: rabbit
+          nodes:
+          environment:
+            spring:
+              rabbitmq:
+                username: cm_admin
+                password: Cadre0n2017
+                addresses: 34.209.181.225,34.215.148.120,34.212.90.206
